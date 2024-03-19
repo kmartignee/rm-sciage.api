@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rm-sciage.api", "rm-sciage.api\rm-sciage.api.csproj", "{1E3CE3A5-2EA9-4A3C-8281-6AC7C9E54EE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E3CE3A5-2EA9-4A3C-8281-6AC7C9E54EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E3CE3A5-2EA9-4A3C-8281-6AC7C9E54EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E3CE3A5-2EA9-4A3C-8281-6AC7C9E54EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E3CE3A5-2EA9-4A3C-8281-6AC7C9E54EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
