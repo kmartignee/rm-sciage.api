@@ -1,6 +1,6 @@
-﻿namespace rm_sciage.domain.DTOs.User;
+﻿namespace rm_sciage.domain.Entities.User;
 
-public class UserDto
+public class UserEntity : EntityBase
 {
     public string LastName { get; set; } = string.Empty;
     public string FirstName { get; set; } = string.Empty;
