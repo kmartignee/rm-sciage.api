@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using rm_sciage.application.Features.User.Commands.Create;
+using rm_sciage.application.Features.User.Commands.Delete;
 using rm_sciage.application.Features.User.Commands.Update;
 using rm_sciage.application.Features.User.Queries.Get;
 using rm_sciage.application.Features.User.Queries.GetList;
@@ -31,5 +32,11 @@ public class UserController : ApiControllerBase<UserController>
     public async Task<GetListUserQueryResponse> GetListUser()
     {
         return await Mediator.Send(new GetListUserQuery());
+    }
+    
+    [HttpDelete("{id:guid}")]
+    public async Task<DeleteUserCommandResponse> DeleteUser(Guid id)
+    {
+        return await Mediator.Send(new DeleteUserCommand(id));
     }
 }
