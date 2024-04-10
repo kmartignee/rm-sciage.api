@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c => c.EnableAnnotations());
 builder.Services.ConfigureCorsServices(builder.Configuration);
 builder.Services.AddPersistanceServices(builder.Configuration);
 builder.Services.AddApplication();
