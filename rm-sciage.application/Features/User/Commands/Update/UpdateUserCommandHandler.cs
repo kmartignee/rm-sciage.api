@@ -1,9 +1,9 @@
-﻿using Ardalis.GuardClauses;
-using AutoMapper;
+﻿using AutoMapper;
 using FluentValidation;
 using MediatR;
 using rm_sciage.application.Contracts.Persistance;
 using rm_sciage.domain.DTOs.User.Validator;
+using rm_sciage.domain.Entities.User;
 
 namespace rm_sciage.application.Features.User.Commands.Update;
 
@@ -17,11 +17,8 @@ public class UpdateUserCommandHandler(IUnitOfWork unitOfWork, IMapper mapper) : 
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        var user = await unitOfWork.UserRepository.GetByIdAsync(request.Id, cancellationToken);
-        user = mapper.Map(request.User, user);
-        
-        Guard.Against.Null(user);
-        
+        var user = mapper.Map<UserEntity>(request.User);
+        user.Id = request.Id;
         user.LastModifiedDate = DateTime.Now;
         
         await unitOfWork.UserRepository.UpdateAsync(user, cancellationToken);

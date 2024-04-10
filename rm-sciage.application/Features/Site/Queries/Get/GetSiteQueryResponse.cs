@@ -2,7 +2,7 @@
 
 namespace rm_sciage.application.Features.Site.Queries.Get;
 
-public abstract class GetSiteQueryResponse
+public class GetSiteQueryResponse
 {
     public SiteDto Site { get; set; } = new();
 }
