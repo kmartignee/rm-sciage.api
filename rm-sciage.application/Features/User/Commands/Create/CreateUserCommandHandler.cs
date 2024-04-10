@@ -18,8 +18,6 @@ public class CreateUserCommandHandler(IUnitOfWork unitOfWork, IMapper mapper) : 
             throw new ValidationException(validationResult.Errors);
         
         var user = await unitOfWork.UserRepository.AddAsync(mapper.Map<UserEntity>(request.User), cancellationToken);
-        user.CreatedDate = DateTime.Now;
-
         await unitOfWork.SaveAsync();
         
         return new CreateUserCommandResponse { Message = $"User with {user.Id} created successfully" };

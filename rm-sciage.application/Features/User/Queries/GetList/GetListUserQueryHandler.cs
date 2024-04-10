@@ -11,6 +11,6 @@ public class GetListUserQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)  : 
     {
         var users = await unitOfWork.UserRepository.ListAllAsync(cancellationToken);
 
-        return new GetListUserQueryResponse { Users = mapper.Map<List<UserDto>>(users) };
+        return new GetListUserQueryResponse { Users = mapper.Map<List<UserResponseDto>>(users) };
     }
 }

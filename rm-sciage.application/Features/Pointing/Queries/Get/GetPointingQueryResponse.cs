@@ -2,7 +2,7 @@
 
 namespace rm_sciage.application.Features.Pointing.Queries.Get;
 
-public abstract class GetPointingQueryResponse
+public class GetPointingQueryResponse
 {
-    public PointingDto Pointing { get; set; } = new();
+    public PointingResponseDto Pointing { get; set; } = new();
 }

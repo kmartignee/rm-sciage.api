@@ -2,6 +2,7 @@
 
 public class PointingDto
 {
+    public Guid UserId { get; set; }
     public List<Guid> SiteIds { get; set; } = [];
     public List<ClockingDto> Clockings { get; set; } = [];
     public bool IsDriver { get; set; }

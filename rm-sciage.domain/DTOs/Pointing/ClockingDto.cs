@@ -3,6 +3,6 @@
 public class ClockingDto
 {
     public bool IsAm { get; set; }
-    public TimeSpan ArrivalTime { get; set; }
-    public TimeSpan DepartureTime { get; set; }
+    public string ArrivalTime { get; set; } = string.Empty;
+    public string DepartureTime { get; set; } = string.Empty;
 }

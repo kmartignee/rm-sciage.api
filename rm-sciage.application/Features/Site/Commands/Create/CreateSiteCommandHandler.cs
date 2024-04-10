@@ -18,8 +18,6 @@ public class CreateSiteCommandHandler(IUnitOfWork unitOfWork, IMapper mapper) : 
             throw new ValidationException(validationResult.Errors);
         
         var site = await unitOfWork.SiteRepository.AddAsync(mapper.Map<SiteEntity>(request.Site), cancellationToken);
-        site.CreatedDate = DateTime.Now;
-        
         await unitOfWork.SaveAsync();
         
         return new CreateSiteCommandResponse { Message = $"Site with {site.Id} created successfully" };

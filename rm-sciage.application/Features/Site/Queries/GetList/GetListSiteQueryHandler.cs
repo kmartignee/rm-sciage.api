@@ -11,6 +11,6 @@ public class GetListSiteQueryHandler(IUnitOfWork unitOfWork, IMapper mapper) : I
     {
         var sites = await unitOfWork.SiteRepository.ListAllAsync(cancellationToken);
         
-        return new GetListSiteQueryResponse { Sites = mapper.Map<List<SiteDto>>(sites) };
+        return new GetListSiteQueryResponse { Sites = mapper.Map<List<SiteResponseDto>>(sites) };
     }
 }

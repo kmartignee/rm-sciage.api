@@ -2,7 +2,7 @@
 
 namespace rm_sciage.application.Features.Pointing.Queries.GetList;
 
-public abstract class GetListPointingQueryResponse
+public class GetListPointingQueryResponse
 {
-    public List<PointingDto> Pointings { get; set; } = [];
+    public List<PointingResponseDto> Pointings { get; set; } = [];
 }

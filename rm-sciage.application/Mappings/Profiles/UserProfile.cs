@@ -8,6 +8,10 @@ public class UserProfile : Profile
 {
     public UserProfile()
     {
-        CreateMap<UserDto, UserEntity>().ReverseMap();
+        CreateMap<UserEntity, UserDto>();
+        CreateMap<UserEntity, UserResponseDto>();
+        CreateMap<UserDto, UserEntity>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore())
+            .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now));
     }
 }

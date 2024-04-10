@@ -1,11 +1,21 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
+using rm_sciage.application.Contracts.Persistance;
+using rm_sciage.application.Specification.Pointing;
+using rm_sciage.domain.DTOs.Pointing;
 
 namespace rm_sciage.application.Features.Pointing.Queries.Get;
 
-public class GetPointingQueryHandler : IRequestHandler<GetPointingQuery, GetPointingQueryResponse>
+public class GetPointingQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    : IRequestHandler<GetPointingQuery, GetPointingQueryResponse>
 {
-    public Task<GetPointingQueryResponse> Handle(GetPointingQuery request, CancellationToken cancellationToken)
+    public async Task<GetPointingQueryResponse> Handle(GetPointingQuery request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var pointing =
+            await unitOfWork.PointingRepository.FirstOrDefaultAsync(new PointingByIdSpecification(request.Id),
+                cancellationToken);
+        var a = mapper.Map<PointingResponseDto>(pointing);
+
+        return new GetPointingQueryResponse { Pointing = a };
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using rm_sciage.application.Features.Pointing.Commands.Create;
+using rm_sciage.application.Features.Pointing.Queries.Get;
 using rm_sciage.application.Features.Pointing.Queries.GetList;
 using rm_sciage.domain.DTOs.Pointing;
 
@@ -14,14 +15,14 @@ public class PointingController : ApiControllerBase<PointingController>
     }
     
     [HttpGet("{id:guid}")]
-    public async Task<GetListPointingQueryResponse> GetPointing(Guid id)
+    public async Task<GetPointingQueryResponse> GetPointing(Guid id)
     {
-        return await Mediator.Send(new GetListPointingQuery(id));
+        return await Mediator.Send(new GetPointingQuery(id));
     }
     
-    [HttpGet("{id:guid}/Week")]
-    public async Task<GetListPointingQueryResponse> GetWeekPointings(Guid id)
+    [HttpGet("{userId:guid}/Week/{date:datetime}")]
+    public async Task<GetListPointingQueryResponse> GetWeekPointings(Guid userId, DateTime date)
     {
-        return await Mediator.Send(new GetListPointingQuery(id));
+        return await Mediator.Send(new GetListPointingQuery(userId, date));
     }
 }

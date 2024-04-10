@@ -4,5 +4,5 @@ namespace rm_sciage.application.Features.Site.Queries.GetList;
 
 public class GetListSiteQueryResponse
 {
-    public List<SiteDto> Sites { get; set; } = [];
+    public List<SiteResponseDto> Sites { get; set; } = [];
 }

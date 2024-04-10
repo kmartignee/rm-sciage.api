@@ -11,6 +11,6 @@ public class GetUserQueryHandler(IUnitOfWork unitOfWork, IMapper mapper) : IRequ
     {
         var user = await unitOfWork.UserRepository.GetByIdAsync(request.Id, cancellationToken);
 
-        return new GetUserQueryResponse { User = mapper.Map<UserDto>(user) };
+        return new GetUserQueryResponse { User = mapper.Map<UserResponseDto>(user) };
     }
 }

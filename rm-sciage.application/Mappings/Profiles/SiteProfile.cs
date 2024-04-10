@@ -8,6 +8,9 @@ public class SiteProfile : Profile
 {
     public SiteProfile()
     {
-        CreateMap<SiteDto, SiteEntity>().ReverseMap();
+        CreateMap<SiteEntity, SiteDto>();
+        CreateMap<SiteEntity, SiteResponseDto>();
+        CreateMap<SiteDto, SiteEntity>()
+            .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now));
     }
 }

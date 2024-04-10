@@ -11,6 +11,6 @@ public class GetSiteQueryHandler(IUnitOfWork unitOfWork, IMapper mapper) : IRequ
     {
         var site = await unitOfWork.SiteRepository.GetByIdAsync(request.Id, cancellationToken);
         
-        return new GetSiteQueryResponse { Site = mapper.Map<SiteDto>(site) };
+        return new GetSiteQueryResponse { Site = mapper.Map<SiteResponseDto>(site) };
     }
 }
