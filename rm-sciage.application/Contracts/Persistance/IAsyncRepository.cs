@@ -5,8 +5,8 @@ namespace rm_sciage.application.Contracts.Persistance;
 
 public interface IAsyncRepository<T> where T : IEntity
 {
-    Task<bool> Exists(int id);
-    Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+    Task<bool> Exists(Guid id);
+    Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     Task<IReadOnlyList<T>> ListAllAsync(CancellationToken cancellationToken = default);
     Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec, CancellationToken cancellationToken = default);
     IReadOnlyList<T> List(ISpecification<T> spec);

@@ -69,14 +69,14 @@ public class AsyncRepository<T> : IAsyncRepository<T> where T : class, IEntity
         return specificationResult.FirstOrDefault();
     }
 
-    public async Task<bool> Exists(int id)
+    public async Task<bool> Exists(Guid id)
     {
         var entity = await GetByIdAsync(id);
 
         return entity != null;
     }
 
-    public virtual async Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+    public virtual async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         var keyValues = new object[] { id };
 
@@ -117,7 +117,9 @@ public class AsyncRepository<T> : IAsyncRepository<T> where T : class, IEntity
 
     public async Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
     {
-        await Task.Run(() => { _dbContext.Entry(entity).State = EntityState.Modified; });
+        _dbContext.Entry(entity).State = EntityState.Modified;
+
+        await Task.CompletedTask;
     }
 
     private IQueryable<T> ApplySpecification(ISpecification<T> spec)

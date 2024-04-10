@@ -1,11 +1,16 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
+using rm_sciage.application.Contracts.Persistance;
+using rm_sciage.domain.DTOs.User;
 
 namespace rm_sciage.application.Features.User.Queries.Get;
 
-public class GetUserQueryHandler : IRequestHandler<GetUserQuery, GetUserQueryResponse>
+public class GetUserQueryHandler(IUnitOfWork unitOfWork, IMapper mapper) : IRequestHandler<GetUserQuery, GetUserQueryResponse>
 {
-    public Task<GetUserQueryResponse> Handle(GetUserQuery request, CancellationToken cancellationToken)
+    public async Task<GetUserQueryResponse> Handle(GetUserQuery request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var user = await unitOfWork.UserRepository.GetByIdAsync(request.Id, cancellationToken);
+
+        return new GetUserQueryResponse { User = mapper.Map<UserDto>(user) };
     }
 }
